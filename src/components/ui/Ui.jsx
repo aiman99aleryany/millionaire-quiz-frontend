@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-import useMoney from 'store/useMoney';
+import useMoney from 'store/money/useMoney';
+import useQuestions from 'store/questions/useQuestions';
+import Quiz from 'components/quiz/Quiz';
 
 import './Ui.scss';
 
 function Ui() {
-    const [question, setQuestion] = useState(1);
+    const [questionNr, setQuestionNr] = useState(1);
+    const [timeOut, setTimeOut] = useState(false);
 
     const money = useMoney((state) => state.money);
+    const questions = useQuestions((state) => state.questions);
 
     return (
         <div className="ui">
@@ -15,7 +19,14 @@ function Ui() {
                 <div className="top">
                     <div className="timer">30</div>
                 </div>
-                <div className="bottom">questions and answers</div>
+                <div className="bottom">
+                    <Quiz
+                        questions={questions}
+                        setTimeOut={setTimeOut}
+                        questionNr={questionNr}
+                        setQuestionNr={setQuestionNr}
+                    />
+                </div>
             </section>
             <section className="ui-pyramid">
                 <ul className="ui-pyramid-money-list">
@@ -24,7 +35,7 @@ function Ui() {
                             <li
                                 key={nanoid()}
                                 className={
-                                    question === mon.id
+                                    questionNr === mon.id
                                         ? 'money-list-item active'
                                         : 'money-list-item'
                                 }
