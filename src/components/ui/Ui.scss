@@ -8,6 +8,32 @@
         width: 75%;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
             url('../../assets/bg.jpg') center;
+        display: flex;
+        flex-direction: column;
+
+        .top {
+            position: relative;
+            height: 50%;
+        }
+
+        .timer {
+            width: 7rem;
+            height: 7rem;
+            border: 0.5rem solid #fff;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: 700;
+            position: absolute;
+            left: 8rem;
+            bottom: 1rem;
+        }
+
+        .bottom {
+            height: 50%;
+        }
     }
 
     &-pyramid {

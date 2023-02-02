@@ -11,7 +11,12 @@ function Ui() {
 
     return (
         <div className="ui">
-            <section className="ui-main">main</section>
+            <section className="ui-main">
+                <div className="top">
+                    <div className="timer">30</div>
+                </div>
+                <div className="bottom">questions and answers</div>
+            </section>
             <section className="ui-pyramid">
                 <ul className="ui-pyramid-money-list">
                     {money.map((mon) => {
