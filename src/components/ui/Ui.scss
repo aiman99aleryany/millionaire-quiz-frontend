@@ -1,0 +1,46 @@
+.ui {
+    height: 100vh;
+    display: flex;
+    color: #fff;
+    background-color: #020230;
+
+    &-main {
+        width: 75%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
+            url('../../assets/bg.jpg') center;
+    }
+
+    &-pyramid {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-money-list {
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .money-list-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .money-list-item.active {
+            background-color: teal;
+        }
+
+        .list-item-number {
+            font-size: 1.8rem;
+            font-weight: 100;
+            width: 30%;
+        }
+
+        .list-item-amount {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+    }
+}
