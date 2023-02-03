@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import useMoney from 'store/money/useMoney';
 import useQuestions from 'store/questions/useQuestions';
@@ -8,25 +8,36 @@ import './Ui.scss';
 
 function Ui() {
     const [questionNr, setQuestionNr] = useState(1);
-    const [timeOut, setTimeOut] = useState(false);
+    const [stop, setStop] = useState(false);
+    const [earned, setEarned] = useState('$ 0');
 
     const money = useMoney((state) => state.money);
     const questions = useQuestions((state) => state.questions);
 
+    useEffect(() => {
+        setEarned(money.find((m) => m.id === questionNr - 1)?.amount);
+    }, [questionNr, money]);
+
     return (
         <div className="ui">
             <section className="ui-main">
-                <div className="top">
-                    <div className="timer">30</div>
-                </div>
-                <div className="bottom">
-                    <Quiz
-                        questions={questions}
-                        setTimeOut={setTimeOut}
-                        questionNr={questionNr}
-                        setQuestionNr={setQuestionNr}
-                    />
-                </div>
+                {stop ? (
+                    <h1 className="center"> You Eearned: {earned}</h1>
+                ) : (
+                    <>
+                        <div className="top">
+                            <div className="timer">30</div>
+                        </div>
+                        <div className="bottom">
+                            <Quiz
+                                questions={questions}
+                                setStop={setStop}
+                                questionNr={questionNr}
+                                setQuestionNr={setQuestionNr}
+                            />
+                        </div>
+                    </>
+                )}
             </section>
             <section className="ui-pyramid">
                 <ul className="ui-pyramid-money-list">
