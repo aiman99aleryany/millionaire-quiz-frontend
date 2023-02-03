@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Timer() {
-    const [timer, setTimer] = useState();
-    return <div>Timer</div>;
+function Timer(props) {
+    const [timer, setTimer] = useState(30);
+
+    useEffect(() => {
+        if (timer === 0) {
+            props.setStop(true);
+            return;
+        }
+        const interval = setInterval(() => {
+            setTimer((state) => state - 1);
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [props.setStop, timer]);
+
+    useEffect(() => {
+        setTimer(30);
+    }, [props.questionNr]);
+
+    return <span>{timer}</span>;
 }
 
 export default Timer;

@@ -12,10 +12,11 @@
         "react-icons": "^4.7.1",
         "react-router-dom": "^6.8.0",
         "react-scripts": "5.0.1",
+        "use-sound": "^4.0.1",
         "web-vitals": "^2.1.4",
         "zustand": "^4.3.2"
     },
-        "devDependencies": {
+    "devDependencies": {
         "concurrently": "^7.6.0",
         "eslint": "^8.32.0",
         "eslint-config-prettier": "^8.6.0",
