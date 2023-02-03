@@ -13,7 +13,7 @@ function Timer(props) {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [props.setStop, timer]);
+    }, [props, props.setStop, timer]);
 
     useEffect(() => {
         setTimer(30);
